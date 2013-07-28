@@ -28,6 +28,9 @@ class AS3Haxe {
 	var _array:Array<Dynamic>;	//Equivalent to 'Array' in ActionScript
 	var _vector:Array<String>;	//Equivalent to 'Vector' in ActionScript
 	
+	//Constants: 'private const d:int = 5;' in ActionScript looks like below in Haxe
+	inline private static var d:Int = 5;
+	
 	/**
 	 * new() is the constructor function in Haxe where as in ActionScript function with class name will act as a constructor
 	*/
@@ -38,6 +41,8 @@ class AS3Haxe {
 		aboutReflectAndType();
 		switchCase();
 		typeInferenceAndCasting();
+		hashTables();
+		Reflect.makeVarArgs(restParameters)(1, 2, 3);
 	}
 	
 	/**
@@ -143,8 +148,49 @@ class AS3Haxe {
 		var toString = Std.string(10);
 		var toNumber = Std.parseFloat("10");
 		var toInteger = Std.int(10.1);
+	}
+	
+	/**
+	 * ...params can be used in ActionScript where as in Haxe it has to be a Dynamic array
+	 * Also to call the function, Reflect is needed to pass the parameters
+	 * Reflect.makeVarArgs(restParameters)(1, 2, 3)
+	*/
+	function restParameters(params:Array<Dynamic>):Void {
+		trace("REST PARAMETERS");
+		for (i in 0...params.length) {
+			trace(i);
+		}
+	}
+	
+	function hashTables():Void {
+		var table = new Map();						//var table:Object = new Object(); in ActionScript
+		table.set("key", 100);						//table["key"] = 100;
 		
-		//Constants ActionScript 'private const d:Number = 5;' looks similar in Haxe
-		inline private static var d = 5;
+		trace(table.exists("key"));					//trace(table.hasOwnProperty("key")); in ActionScript
+		
+		for(key in table.keys()) {					//for(var key:Object in table) { in ActionScript
+		   trace(key + " = " + table.get(key));		//trace(key + " = " + table[key]); in ActionScript
+		}
+		
+		table.remove("key");						//delete table["key"]; in ActionScript
+		
+		
+		// Map sample - Int keys with Int values
+		var map = new Map();
+		map.set(6, 7);
+		trace(map.get(6)); // 7
+	}
+	
+	/**
+	 * Getters and Setters
+	*/	
+	public var x(getX, setX):Float; // No need of this in ActionScript, functions directly can be used as getters and setters with get and set keywords
+	
+	function getX():Float { //Similar to public function get x():Number
+	   return _x;
+	}
+ 
+	function setX(value:Float):Float { //Similar to public function set x(value:Number):void
+	   return _x = value;
 	}
 }
