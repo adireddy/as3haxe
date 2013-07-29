@@ -189,10 +189,10 @@ class AS3Haxe {
 	public var x(get, set):Int;
 	
 	function get_x():Int { //Similar to public function get x():int
-	   return 1;
+		return 1;
 	}
  
 	function set_x(value:Int):Int { //Similar to public function set x(value:int):void
-	   return 1;
+		return 1;
 	}
 }
