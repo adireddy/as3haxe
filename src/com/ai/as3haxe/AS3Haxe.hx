@@ -15,11 +15,14 @@ import flash.Lib;
 
 /**
  * Class definition doesn't need access modifier in haxe (private, public, etc)
+ * In Haxe a class can be dynamic if it implements Dynamic interface (class AS3Haxe implements Dynamic)
+ * In ActionScript the class can be dynamic by using the keyword 'dynamic' (public dynamic class AS3Haxe) 
 */
 class AS3Haxe {
 	
 	/**
-	 * Default the access modifier is 'private' in Haxe
+	 * In Haxe, all fields are 'private' by default
+	 * Also in Haxe 'private' corresponds to 'protected' as used in ActionScript
 	*/
 	var _boolean:Bool;		//Equivalent to 'Boolean' in ActionScript
 	var _int:Int;			//Equivalent to 'int' in ActionScript
