@@ -21,9 +21,9 @@ class AS3Haxe {
 	/**
 	 * Default the access modifier is 'private' in Haxe
 	*/
-	var _boolean:Bool;			//Equivalent to 'Boolean' in ActionScript
-	var _int:Int;				//Equivalent to 'int' in ActionScript
-	var _float:Float;			//Equivalent to 'Number' in ActionScript
+	var _boolean:Bool;		//Equivalent to 'Boolean' in ActionScript
+	var _int:Int;			//Equivalent to 'int' in ActionScript
+	var _float:Float;		//Equivalent to 'Number' in ActionScript
 	var _dynamic:Dynamic;		//Equivalent to 'Object' in ActionScript
 	var _array:Array<Dynamic>;	//Equivalent to 'Array' in ActionScript
 	var _vector:Array<String>;	//Equivalent to 'Vector' in ActionScript
@@ -163,16 +163,16 @@ class AS3Haxe {
 	}
 	
 	function hashTables():Void {
-		var table = new Map();						//var table:Object = new Object(); in ActionScript
-		table.set("key", 100);						//table["key"] = 100;
+		var table = new Map();				//var table:Object = new Object(); in ActionScript
+		table.set("key", 100);				//table["key"] = 100;
 		
-		trace(table.exists("key"));					//trace(table.hasOwnProperty("key")); in ActionScript
+		trace(table.exists("key"));			//trace(table.hasOwnProperty("key")); in ActionScript
 		
-		for(key in table.keys()) {					//for(var key:Object in table) { in ActionScript
+		for(key in table.keys()) {			//for(var key:Object in table) { in ActionScript
 		   trace(key + " = " + table.get(key));		//trace(key + " = " + table[key]); in ActionScript
 		}
 		
-		table.remove("key");						//delete table["key"]; in ActionScript
+		table.remove("key");				//delete table["key"]; in ActionScript
 		
 		
 		// Map sample - Int keys with Int values
@@ -183,14 +183,16 @@ class AS3Haxe {
 	
 	/**
 	 * Getters and Setters
+	 * In ActionScript, functions can directly be used as getters and setters with 'get' and 'set' keywords
+	 * In Haxe, you have to explicitly declare the variable and it's getter and setter function names as shown below
 	*/	
-	public var x(getX, setX):Float; // No need of this in ActionScript, functions directly can be used as getters and setters with get and set keywords
+	public var x(get, set):Int;
 	
-	function getX():Float { //Similar to public function get x():Number
-	   return _x;
+	function get_x():Int { //Similar to public function get x():int
+	   return 1;
 	}
  
-	function setX(value:Float):Float { //Similar to public function set x(value:Number):void
-	   return _x = value;
+	function set_x(value:Int):Int { //Similar to public function set x(value:int):void
+	   return 1;
 	}
 }
